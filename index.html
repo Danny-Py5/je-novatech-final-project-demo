@@ -65,6 +65,37 @@
         display: none;
       }
 
+      .menu {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 103;
+      }
+
+      .menu span {
+        display: block;
+        width: 1.5rem;
+        height: 2px;
+        margin: 0.3rem 0;
+        background: #0f172a;
+        transition:
+          transform 0.2s,
+          opacity 0.2s;
+      }
+
+      .menu[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(0.5rem) rotate(45deg);
+      }
+
+      .menu[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-0.5rem) rotate(-45deg);
+      }
+
       .logo {
         font-size: 1.5rem;
         font-weight: 700;
@@ -601,6 +632,42 @@
           flex-direction: row;
           display: flex;
         }
+
+        header .menu {
+          display: block;
+        }
+
+        nav {
+          position: fixed;
+          top: 0;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.5rem;
+          width: min(82vw, 320px);
+          height: 100vh;
+          padding: 6rem 1.5rem 2rem;
+          background: #ffffff;
+          box-shadow: -8px 0 24px rgba(15, 23, 42, 0.12);
+          transform: translateX(100%);
+          transition: transform 0.25s ease;
+          z-index: 102;
+        }
+
+        nav.open {
+          transform: translateX(0);
+        }
+
+        nav a {
+          display: block;
+          padding: 0.75rem 1rem;
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+
         .hero h1 {
           font-size: 2.2rem;
         }
@@ -630,19 +697,6 @@
       }
 
       @media (max-width: 500px) {
-        header .container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        nav {
-          justify-content: center;
-          display: none;
-        }
-        header .menu {
-          display: block;
-        }
-
         .hero h1 {
           font-size: 1.8rem;
         }
@@ -687,7 +741,7 @@
     <header>
       <div class="container">
         <div class="logo">Nova<span>Tech</span></div>
-        <nav>
+        <nav id="siteNav">
           <a href="#home" class="active">Home</a>
           <a href="#about">About</a>
           <a href="#services">Services</a>
@@ -695,11 +749,17 @@
           <a href="#testimonials">Testimonials</a>
           <a href="#contact">Contact</a>
         </nav>
-        <div class="menu">
-          <div>---</div>
-          <div>---</div>
-          <div></div>
-        </div>
+        <button
+          class="menu"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="siteNav"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -1019,8 +1079,38 @@
           if (target) {
             target.scrollIntoView({ behavior: "smooth" });
           }
+
+          closeMenu();
         });
       });
+
+      const menuButton = document.querySelector(".menu");
+      const siteNav = document.getElementById("siteNav");
+
+      function closeMenu() {
+        if (!menuButton || !siteNav) return;
+
+        siteNav.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+      }
+
+      if (menuButton && siteNav) {
+        menuButton.addEventListener("click", function () {
+          const isOpen = siteNav.classList.toggle("open");
+          document.body.classList.toggle("menu-open", isOpen);
+          menuButton.setAttribute("aria-expanded", String(isOpen));
+          menuButton.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu",
+          );
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeMenu();
+        });
+      }
 
       // ============================================================
       // GET STARTED → SCROLL TO CONTACT
