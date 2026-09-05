@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaTech - Building Better Digital Experiences</title>
+
+    <!-- ============================================================
+    STAGE 2: CSS (Uncomment the style tag below for the styled version)
+    ============================================================ -->
+    <style>
+      /* ===== RESET & BASE ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        color: #1e293b;
+        line-height: 1.7;
+        background: #ffffff;
+      }
+
+      /* ===== CONTAINER ===== */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+
+        & h2 {
+          color: black;
+        }
+      }
+
+      /* ===== HEADER / NAV ===== */
+      header {
+        background: #ffffff;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eef2f6;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      }
+
+      header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      header .menu {
+        display: none;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        letter-spacing: -0.5px;
+      }
+
+      .logo span {
+        color: #2563eb;
+      }
+
+      nav {
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #475569;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+
+      nav a:hover {
+        background: #f1f5f9;
+        color: #0f172a;
+      }
+
+      nav a.active {
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      /* ===== SECTIONS ===== */
+      section {
+        padding: 5rem 0;
+      }
+
+      section:nth-child(even) {
+        background: #f8fafc;
+      }
+      img {
+        object-fit: cover;
+        border-radius: 50px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .section-title span {
+        color: #2563eb;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: #64748b;
+        max-width: 600px;
+        margin: -0.5rem auto 2.5rem auto;
+        font-size: 1.05rem;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        padding: 6rem 0 5rem 0;
+        text-align: center;
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: rgba(37, 99, 235, 0.05);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.2;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .hero h1 span {
+        color: #2563eb;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+        color: #475569;
+        max-width: 550px;
+        margin: 1rem auto 2rem auto;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: #dbeafe;
+        color: #2563eb;
+        padding: 0.3rem 1.2rem;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      /* ===== BUTTONS ===== */
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 2.2rem;
+        border-radius: 30px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.1s,
+          box-shadow 0.2s;
+      }
+
+      .btn-primary {
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: #1d4ed8;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: #2563eb;
+        border: 2px solid #2563eb;
+      }
+
+      .btn-outline:hover {
+        background: #2563eb;
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: #f1f5f9;
+        color: #1e293b;
+      }
+
+      .btn-secondary:hover {
+        background: #e2e8f0;
+      }
+
+      /* ===== SERVICES CARDS ===== */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .card {
+        background: #ffffff;
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+        border: 1px solid #eef2f6;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        text-align: center;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .card .icon {
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 0.3rem;
+      }
+
+      .card p {
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+
+      /* ===== ABOUT ===== */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-grid h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .about-grid h2 span {
+        color: #2563eb;
+      }
+
+      .about-grid p {
+        color: #475569;
+        margin: 1rem 0 1.5rem 0;
+      }
+
+      .about-grid ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .about-grid ul li {
+        padding: 0.4rem 0;
+        color: #475569;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .about-grid ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .about-image {
+        background: linear-gradient(135deg, #eef2ff, #dbeafe);
+        border-radius: 16px;
+        padding: 3.5rem 2rem;
+        text-align: center;
+        font-size: 5rem;
+        color: #2563eb;
+      }
+
+      /* ===== STATS ===== */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0 0 0;
+        text-align: center;
+      }
+
+      .stat-item {
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid #eef2f6;
+      }
+
+      .stat-item h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2563eb;
+      }
+
+      .stat-item p {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-top: 0.2rem;
+      }
+
+      /* ===== TEAM ===== */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .team-card {
+        background: #ffffff;
+
+        padding: 1.5rem;
+        border-radius: 16px;
+        border: 1px solid #eef2f6;
+        text-align: center;
+        transition: transform 0.2s;
+      }
+
+      .team-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .team-card .avatar {
+        font-size: 3rem;
+        margin-bottom: 0.3rem;
+        width: 50px;
+        height: 50px;
+        margin: 1rem auto;
+      }
+
+      .team-card h4 {
+        font-weight: 600;
+        color: #0f172a;
+      }
+
+      .team-card p {
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      /* ===== TESTIMONIALS ===== */
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .testimonial {
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 16px;
+        border: 1px solid #eef2f6;
+        font-style: italic;
+        color: #475569;
+        position: relative;
+      }
+
+      .testimonial::before {
+        content: '"';
+        font-size: 3rem;
+        color: #2563eb;
+        opacity: 0.2;
+        position: absolute;
+        top: 0.2rem;
+        left: 0.8rem;
+      }
+
+      .testimonial .author {
+        font-style: normal;
+        font-weight: 600;
+        color: #0f172a;
+        margin-top: 0.8rem;
+      }
+
+      /* ===== CONTACT FORM ===== */
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        align-items: start;
+      }
+
+      .contact-info h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-info p {
+        color: #64748b;
+        margin-bottom: 1rem;
+      }
+
+      .contact-info .detail {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0;
+        color: #475569;
+      }
+
+      .contact-info .detail span {
+        font-size: 1.2rem;
+      }
+
+      .contact-form {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 16px;
+        border: 1px solid #eef2f6;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      }
+
+      .contact-form label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-top: 1rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+        font-family: inherit;
+        transition: border-color 0.2s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      .contact-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .contact-form .btn {
+        margin-top: 1.2rem;
+        width: 100%;
+      }
+
+      /* ===== FORM SUCCESS ===== */
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 1rem;
+        background: #d1fae5;
+        border-radius: 12px;
+        color: #065f46;
+        margin-top: 1rem;
+      }
+
+      .form-success.show {
+        display: block;
+      }
+
+      /* ===== CTA SECTION ===== */
+      .cta-section {
+        background: #0f172a;
+        color: #ffffff;
+        text-align: center;
+        padding: 4rem 0;
+      }
+
+      .cta-section h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+      }
+
+      .cta-section p {
+        color: #94a3b8;
+        max-width: 500px;
+        margin: 0.5rem auto 1.5rem auto;
+      }
+
+      .cta-section .btn-primary {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .cta-section .btn-primary:hover {
+        background: #e2e8f0;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: #0f172a;
+        color: #94a3b8;
+        padding: 2.5rem 0;
+        text-align: center;
+        border-top: 1px solid #1e293b;
+      }
+
+      footer .logo {
+        color: #ffffff;
+      }
+
+      footer .logo span {
+        color: #60a5fa;
+      }
+
+      footer p {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+      }
+
+      footer .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin: 1rem 0;
+        flex-wrap: wrap;
+      }
+
+      footer .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+      }
+
+      footer .footer-links a:hover {
+        color: #ffffff;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        header .container {
+          flex-direction: row;
+          display: flex;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .about-grid,
+        .contact-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          order: -1;
+        }
+
+        .cards,
+        .team-grid,
+        .testimonial-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero::after {
+          display: none;
+        }
+      }
+
+      @media (max-width: 500px) {
+        header .container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav {
+          justify-content: center;
+          display: none;
+        }
+        header .menu {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== JAVASCRIPT DEMO ===== */
+      .js-demo {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-radius: 12px;
+        background: #f1f5f9;
+        text-align: center;
+        border: 1px dashed #94a3b8;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+
+      .js-demo.active {
+        background: #dbeafe;
+        border-color: #2563eb;
+      }
+
+      .js-demo p {
+        font-size: 0.9rem;
+        color: #475569;
+      }
+
+      .js-demo .btn {
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+    HEADER / NAV
+    ============================================================ -->
+    <header>
+      <div class="container">
+        <div class="logo">Nova<span>Tech</span></div>
+        <nav>
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#team">Team</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="menu">
+          <div>---</div>
+          <div>---</div>
+          <div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-badge">🚀 Trusted by 30+ companies</div>
+        <h1>Building Better <span>Digital Experiences</span></h1>
+        <p>
+          NovaTech helps businesses create modern, fast, and user-friendly
+          websites and applications that people love to use.
+        </p>
+        <a href="#contact" class="btn btn-primary" id="getStartedBtn"
+          >Get Started →</a
+        >
+      </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <h2>About <span>NovaTech</span></h2>
+            <p>
+              We are a team of passionate designers and developers dedicated to
+              building digital products that solve real problems for businesses
+              of all sizes.
+            </p>
+            <ul>
+              <li>Founded in 2020</li>
+              <li>50+ projects delivered</li>
+              <li>Trusted by 30+ companies</li>
+              <li>100% client satisfaction</li>
+            </ul>
+          </div>
+          <div class="about-image">🚀</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>50+</h3>
+            <p>Projects Delivered</p>
+          </div>
+          <div class="stat-item">
+            <h3>30+</h3>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat-item">
+            <h3>4.9★</h3>
+            <p>Average Rating</p>
+          </div>
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Satisfaction Rate</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    SERVICES
+    ============================================================ -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Our <span>Services</span></h2>
+        <p class="section-subtitle">
+          We offer a wide range of digital solutions to help your business grow
+          online.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">💻</div>
+            <h3>Web Development</h3>
+            <p>
+              Custom websites built with modern technologies for speed,
+              security, and performance.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">📱</div>
+            <h3>Mobile Development</h3>
+            <p>
+              Native and cross-platform mobile apps for iOS and Android that
+              users love.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Digital Solutions</h3>
+            <p>
+              End-to-end digital products from strategy and design to launch and
+              beyond.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🎨</div>
+            <h3>UI/UX Design</h3>
+            <p>
+              Beautiful, intuitive interfaces designed with your users in mind.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    TEAM
+    ============================================================ -->
+    <section id="team">
+      <div class="container">
+        <h2 class="section-title">Meet the <span>Team</span></h2>
+        <p class="section-subtitle">The talented people behind NovaTech.</p>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="avatar">
+              <img
+                src="images/dannypy.jpeg"
+                alt="daniel fatokun"
+                width="50px"
+              />
+            </div>
+            <h4>Daniel Fatokun</h4>
+            <p>Founder & Lead Developer</p>
+          </div>
+          <div class="team-card">
+            <div class="avatar">
+              <img width="50px" src="images/user1.jpg" alt="" />
+            </div>
+            <h4>Sarah Johnson</h4>
+            <p>UI/UX Designer</p>
+          </div>
+          <div class="team-card">
+            <div class="avatar">
+              <img width="50px" src="images/user2.jpg" alt="" />
+            </div>
+            <h4>Michael Chen</h4>
+            <p>Backend Engineer</p>
+          </div>
+          <div class="team-card">
+            <div class="avatar">
+              <img width="50px" src="images/user3.jpg" alt="" />
+            </div>
+            <h4>Emily Rodriguez</h4>
+            <p>Project Manager</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    TESTIMONIALS
+    ============================================================ -->
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Our <span>Clients Say</span></h2>
+        <p class="section-subtitle">
+          Real feedback from real people we've worked with.
+        </p>
+
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <p>
+              NovaTech transformed our outdated website into a modern, fast
+              platform. Our sales increased by 40% within three months.
+            </p>
+            <div class="author">— James Otun, CEO of TechGrowth</div>
+          </div>
+          <div class="testimonial">
+            <p>
+              The team at NovaTech is incredibly professional and easy to work
+              with. They truly care about delivering quality work.
+            </p>
+            <div class="author">
+              — Grace Williams, Founder of Graceful Designs
+            </div>
+          </div>
+          <div class="testimonial">
+            <p>
+              We needed a mobile app fast and NovaTech delivered ahead of
+              schedule. Highly recommended for any digital project.
+            </p>
+            <div class="author">— David Kim, CTO of AppVentures</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT
+    ============================================================ -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in <span>Touch</span></h2>
+        <p class="section-subtitle">
+          Have a project in mind? Let's talk about how we can help you.
+        </p>
+
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <h3>Let's build something great together.</h3>
+            <p>Reach out to us and we'll get back to you within 24 hours.</p>
+            <div class="detail"><span>📍</span> Lagos, Nigeria</div>
+            <div class="detail"><span>📧</span> hello@novatech.com</div>
+            <div class="detail"><span>📞</span> +234 800 000 0000</div>
+          </div>
+
+          <div class="contact-form">
+            <form id="contactForm">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Daniel Fatokun"
+                required
+              />
+
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="daniel@example.com"
+                required
+              />
+
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                placeholder="Tell us about your project..."
+                required
+              ></textarea>
+
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+              ✅ Thank you! Your message has been sent. We'll get back to you
+              soon.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    CTA SECTION
+    ============================================================ -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to build something amazing?</h2>
+        <p>Let's work together to bring your ideas to life.</p>
+        <a href="#contact" class="btn btn-primary">Start Your Project</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    JAVASCRIPT DEMO
+    ============================================================ -->
+    <section style="padding: 3rem 0; background: #ffffff">
+      <div class="container">
+        <h2 class="section-title" style="font-size: 1.5rem">
+          JavaScript <span>Interaction</span>
+        </h2>
+        <div class="js-demo" id="jsDemo">
+          <p>💡 Click the button below to see JavaScript in action.</p>
+          <button class="btn btn-outline" id="demoToggleBtn">
+            Toggle Highlight
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer>
+      <div class="container">
+        <div class="logo">Nova<span>Tech</span></div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2026 NovaTech. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ============================================================
+    STAGE 3: JAVASCRIPT
+    ============================================================ -->
+    <script>
+      // ============================================================
+      // SMOOTH SCROLL FOR NAVIGATION
+      // ============================================================
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document
+            .querySelectorAll("nav a")
+            .forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+
+          const targetId = this.getAttribute("href");
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // ============================================================
+      // GET STARTED → SCROLL TO CONTACT
+      // ============================================================
+      const getStartedBtn = document.getElementById("getStartedBtn");
+      if (getStartedBtn) {
+        getStartedBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const contact = document.getElementById("contact");
+          if (contact) {
+            contact.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      }
+
+      // ============================================================
+      // CONTACT FORM
+      // ============================================================
+      const contactForm = document.getElementById("contactForm");
+      const formSuccess = document.getElementById("formSuccess");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const message = document.getElementById("message").value.trim();
+
+          if (!name || !email || !message) {
+            alert("Please fill in all fields.");
+            return;
+          }
+
+          formSuccess.classList.add("show");
+          contactForm.reset();
+
+          setTimeout(() => {
+            formSuccess.classList.remove("show");
+          }, 5000);
+        });
+      }
+
+      // ============================================================
+      // JAVASCRIPT DEMO
+      // ============================================================
+      const demoBtn = document.getElementById("demoToggleBtn");
+      const demoBox = document.getElementById("jsDemo");
+
+      if (demoBtn && demoBox) {
+        demoBtn.addEventListener("click", function () {
+          demoBox.classList.toggle("active");
+          this.textContent = demoBox.classList.contains("active")
+            ? "Remove Highlight"
+            : "Toggle Highlight";
+        });
+      }
+
+      console.log("✅ NovaTech website is ready!");
+    </script>
+  </body>
+</html>
