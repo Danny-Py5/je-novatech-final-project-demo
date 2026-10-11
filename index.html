@@ -710,6 +710,23 @@
         }
       }
 
+      @media (min-width: 769px) {
+        nav {
+          position: static;
+          width: auto;
+          height: auto;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+          transform: none;
+          transition: none;
+        }
+
+        body.menu-open {
+          overflow: visible;
+        }
+      }
+
       /* ===== JAVASCRIPT DEMO ===== */
       .js-demo {
         margin-top: 2rem;
@@ -1128,6 +1145,10 @@
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape") closeMenu();
         });
+
+        window
+          .matchMedia("(max-width: 768px)")
+          .addEventListener("change", closeMenu);
       }
 
       // ============================================================
