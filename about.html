@@ -351,6 +351,13 @@
         color: #1a3d7a;
         margin: 0 auto 12px;
         box-shadow: 0 4px 12px rgba(26, 92, 255, 0.06);
+
+        & img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
       }
 
       .team-card h4 {
@@ -422,6 +429,10 @@
         font-size: 3rem;
         margin-bottom: 0.8rem;
         display: block;
+      }
+
+      .icon i {
+        color: #1a5cff;
       }
 
       .value-item h4 {
@@ -626,22 +637,30 @@
       <!-- Stats -->
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="icon">📊</span>
+          <span class="icon">
+            <i class="fa-solid fa-chart-column"></i>
+          </span>
           <h3>50+</h3>
           <p>Projects Delivered</p>
         </div>
         <div class="stat-item">
-          <span class="icon">🤝</span>
+          <span class="icon">
+            <i class="fa-solid fa-handshake"></i>
+          </span>
           <h3>30+</h3>
           <p>Happy Clients</p>
         </div>
         <div class="stat-item">
-          <span class="icon">⭐</span>
+          <span class="icon">
+            <i class="fa-solid fa-star"></i>
+          </span>
           <h3>4.9★</h3>
           <p>Average Rating</p>
         </div>
         <div class="stat-item">
-          <span class="icon">💯</span>
+          <span class="icon">
+            <i class="fa-solid fa-check-circle"></i>
+          </span>
           <h3>100%</h3>
           <p>Satisfaction Rate</p>
         </div>
@@ -652,7 +671,9 @@
         <h3>Our <span style="color: #1a5cff">Values</span></h3>
         <div class="values-grid">
           <div class="value-item">
-            <span class="icon">💡</span>
+            <span class="icon">
+              <i class="fa-solid fa-lightbulb"></i>
+            </span>
             <h4>Innovation</h4>
             <p>
               We push boundaries and explore new technologies to deliver
@@ -660,7 +681,9 @@
             </p>
           </div>
           <div class="value-item">
-            <span class="icon">🤝</span>
+            <span class="icon">
+              <i class="fa-solid fa-handshake"></i>
+            </span>
             <h4>Collaboration</h4>
             <p>
               We work closely with our clients, turning their vision into
@@ -668,7 +691,9 @@
             </p>
           </div>
           <div class="value-item">
-            <span class="icon">❤️</span>
+            <span class="icon">
+              <i class="fa-solid fa-heart"></i>
+            </span>
             <h4>Passion</h4>
             <p>We love what we do, and it shows in every project we deliver.</p>
           </div>
@@ -683,9 +708,11 @@
         <p class="section-subtitle">The people behind NovaTech</p>
         <div class="team-grid">
           <div class="team-card">
-            <div class="avatar">👩‍💻</div>
-            <h4>Alex Rivera</h4>
-            <p>Lead Developer</p>
+            <div class="avatar">
+              <img src="images/dannypy.jpeg" alt="Daniel Fatokun" width="50" />
+            </div>
+            <h4>Daniel Fatokun</h4>
+            <p>Founder & Lead Developer</p>
             <div class="social-links">
               <a href="#"><i class="fab fa-linkedin"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
@@ -693,9 +720,11 @@
             </div>
           </div>
           <div class="team-card">
-            <div class="avatar">👨‍🎨</div>
-            <h4>Jamie Chen</h4>
-            <p>Design Director</p>
+            <div class="avatar">
+              <img src="images/user1.jpg" alt="Sarah Johnson" width="50" />
+            </div>
+            <h4>Sarah Johnson</h4>
+            <p>UI/UX Designer</p>
             <div class="social-links">
               <a href="#"><i class="fab fa-linkedin"></i></a>
               <a href="#"><i class="fab fa-dribbble"></i></a>
@@ -703,18 +732,22 @@
             </div>
           </div>
           <div class="team-card">
-            <div class="avatar">🧑‍🏫</div>
-            <h4>Taylor Smith</h4>
-            <p>Product Manager</p>
+            <div class="avatar">
+              <img src="images/user2.jpg" alt="Michael Chen" width="50" />
+            </div>
+            <h4>Michael Chen</h4>
+            <p>Backend Engineer</p>
             <div class="social-links">
               <a href="#"><i class="fab fa-linkedin"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
           <div class="team-card">
-            <div class="avatar">👩‍💼</div>
-            <h4>Morgan Lee</h4>
-            <p>Client Success</p>
+            <div class="avatar">
+              <img src="images/user3.jpg" alt="Emily Rodriguez" width="50" />
+            </div>
+            <h4>Emily Rodriguez</h4>
+            <p>Project Manager</p>
             <div class="social-links">
               <a href="#"><i class="fab fa-linkedin"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
@@ -727,7 +760,7 @@
       <section class="cta-section">
         <h3>Ready to build something amazing?</h3>
         <p>Let's work together to bring your ideas to life.</p>
-        <a href="/index.html#contact" class="btn-cta"
+        <a href="index.html#contact" class="btn-cta"
           >Get in touch <i class="fas fa-arrow-right"></i
         ></a>
       </section>
